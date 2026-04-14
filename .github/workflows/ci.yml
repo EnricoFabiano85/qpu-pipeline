@@ -22,4 +22,4 @@ jobs:
           runCmd: |
             cmake -B build -S .
             cmake --build build -j $(nproc)
-            PYTHONPATH=build python3 benchmarks/benchmark.py
+            PYTHONPATH=build python3 benchmarks/benchmarks.py
