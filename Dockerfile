@@ -8,6 +8,8 @@ ENV PYTHONBUFFERED=1
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     cmake \
+    libomp-dev \
+    clangd \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
