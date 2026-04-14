@@ -1,0 +1,25 @@
+name: Quantum Engine CI
+
+on:
+  push:
+    branches: [ "main", "feat/*", "infra/*" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+   
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build and Run in Dev Container
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: quantum-engine-dev
+          cacheFrom: quantum-engine-dev
+          runCmd: |
+            cmake -B build -S .
+            cmake --build build -j $(nproc)
+            PYTHONPATH=build python3 benchmarks/benchmark.py
