@@ -19,6 +19,7 @@ jobs:
         with:
           imageName: quantum-engine-dev
           cacheFrom: quantum-engine-dev
+          push: never
           runCmd: |
             cmake -B build -S .
             cmake --build build -j $(nproc)
