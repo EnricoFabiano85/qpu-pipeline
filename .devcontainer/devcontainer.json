@@ -1,0 +1,35 @@
+{
+  "name": "C++ Quantum Engine Environment",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest",
+      "ppa": "false"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "cmake.configureOnOpen": true,
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "C_Cpp.intellisenseEnging": "disabled",
+        "clangd.arguments": [
+          "--compile-commands-dir=${workspaceFolder}/build",
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=iwyu"
+        ]
+      },
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "ms-python.python",
+        "llvm-vs-code-extensions.vscode-clangd"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}
