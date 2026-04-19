@@ -29,4 +29,4 @@ jobs:
       - name: Notify on Failure
         if: failure()
         run: |
-        echo "::error title=Build/Test Failed::Quantum Engine CI pipeline failed. Check logs."
+          echo "::error title=Build/Test Failed::Quantum Engine CI pipeline failed. Check logs."
