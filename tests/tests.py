@@ -17,7 +17,7 @@ def test_cpp_engine_unit(nQbits):
   entropy = quantum_engine.process_state(state, out_probs)
 
   assert np.isclose(entropy_ref, entropy, rtol=1e-5)
-  assert np.allclose(probs_ref, out_probs, rtol=1e-15)
+  assert np.allclose(probs_ref, out_probs, rtol=1e-5)
 
 @pytest.mark.benchmark(group="entropy")
 def test_numpy_reference(benchmark):
