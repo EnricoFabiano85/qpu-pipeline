@@ -22,11 +22,11 @@ def test_cpp_engine_unit(nQbits):
 @pytest.mark.benchmark(group="entropy")
 def test_numpy_reference(benchmark):
     
-    nQbits = 24
-    N = 2**nQbits
+  nQbits = 24
+  N = 2**nQbits
 
-    state = (np.random.rand(N) + 1j*np.random.rand(N)).astype(np.complex128)
-    benchmark(numpy_entropy, state)
+  state = (np.random.rand(N) + 1j*np.random.rand(N)).astype(np.complex128)
+  benchmark(numpy_entropy, state)
 
 @pytest.mark.benchmark(group="entropy")
 def test_benchmark_engine(benchmark):

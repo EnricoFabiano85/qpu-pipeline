@@ -17,10 +17,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir \
-    numpy \
     pybind11 \
-    pytest \
-    pytest-benchmark
+    scikit-build-core
 
 WORKDIR /app
 
