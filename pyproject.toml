@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
 authors = [
-    { name = "Your Name", email = "you@example.com" },
+    { name = "Enrico Fabiano", email = "efabiano.aer@gmail.com" },
 ]
 classifiers = [
     "Programming Language :: C++",
@@ -37,10 +37,6 @@ minimum-version = "build-system.requires"
 wheel.packages = ["prototype"]
 build.verbose = true
 logging.level = "INFO"
-
-[tool.scikit-build.cmake.define]
-# Put any -D flags here if you need to flip them per-build
-# EXAMPLE_OPTION = "ON"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
