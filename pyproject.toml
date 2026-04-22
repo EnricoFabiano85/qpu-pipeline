@@ -1,0 +1,46 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "pybind11>=2.12"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "quantum_engine"
+version = "1.0.0"
+description = "High-performance quantum simulation engine with a pybind11 C++ core"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    { name = "Your Name", email = "you@example.com" },
+]
+classifiers = [
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: POSIX :: Linux",
+]
+dependencies = [
+    "numpy>=1.25",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7",
+    "pytest-benchmark>=4",
+    "pytest-github-actions-annotate-failures"
+]
+
+[tool.scikit-build]
+build-dir = "build"
+cmake.version = ">=3.20"
+cmake.build-type = "Release"
+minimum-version = "build-system.requires"
+wheel.packages = ["prototype"]
+build.verbose = true
+logging.level = "INFO"
+
+[tool.scikit-build.cmake.define]
+# Put any -D flags here if you need to flip them per-build
+# EXAMPLE_OPTION = "ON"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

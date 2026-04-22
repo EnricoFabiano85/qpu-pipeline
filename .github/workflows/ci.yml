@@ -21,6 +21,11 @@ jobs:
           cacheFrom: quantum-engine-dev
           push: never
           runCmd: |
-            cmake -B build -S .
-            cmake --build build -j $(nproc)
-            PYTHONPATH=build python3 benchmarks/benchmarks.py
+            python3 -m pip install -e .[test] --no-build-isolation
+            pytest tests/ -v --benchmark-skip
+            pytest tests/ --benchmark-only --benchmark-columns=mean,stddev,rounds
+
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "::error title=Build/Test Failed::Quantum Engine CI pipeline failed. Check logs."

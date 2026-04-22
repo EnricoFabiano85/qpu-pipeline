@@ -10,10 +10,13 @@
       "ppa": "false"
     }
   },
+  "postCreateCommand": "pip install -e .[test] --no-build-isolation",
   "customizations": {
     "vscode": {
       "settings": {
-        "cmake.configureOnOpen": true,
+        "cmake.configureOnOpen": false,
+        "python.testing.pytestEnabled": true,
+        "python.testing.pytestArgs": ["tests"],
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "C_Cpp.intellisenseEnging": "disabled",
         "clangd.arguments": [
@@ -27,6 +30,7 @@
         "ms-vscode.cpptools",
         "ms-vscode.cmake-tools",
         "ms-python.python",
+        "ms-python.vscode-pylint",
         "llvm-vs-code-extensions.vscode-clangd"
       ]
     }
