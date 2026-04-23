@@ -10,7 +10,7 @@
       "ppa": "false"
     }
   },
-  "postCreateCommand": "pip install -e .[test] --no-build-isolation",
+  "postCreateCommand": "python3 -m pip install -e .[test] --no-build-isolation",
   "customizations": {
     "vscode": {
       "settings": {
@@ -18,7 +18,7 @@
         "python.testing.pytestEnabled": true,
         "python.testing.pytestArgs": ["tests"],
         "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "C_Cpp.intellisenseEnging": "disabled",
+        "C_Cpp.intellisenseEngine": "disabled",
         "clangd.arguments": [
           "--compile-commands-dir=${workspaceFolder}/build",
           "--background-index",
