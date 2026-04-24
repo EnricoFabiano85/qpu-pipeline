@@ -9,6 +9,9 @@ def compute_entropy(state: np.ndarray) -> tuple[np.ndarray, float]:
   #compute probabilities
   probabilities = np.abs(state)**2
 
+  norm_sq = np.sum(probabilities)
+  probabilities /= norm_sq  
+
   #filter out zero probabilities
   non_zero_mask = probabilities > 1e-12
   p_non_zero = probabilities[non_zero_mask]
