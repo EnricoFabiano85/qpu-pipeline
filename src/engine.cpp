@@ -63,4 +63,7 @@ PYBIND11_MODULE(quantum_engine, m) {
 
   m.def("process_state", &quantum_engine::compute_entropy,
         "Calculate Shannon entropy and extract probabilities in-place");
+
+  m.def("set_nume_threads", &omp_set_num_threads, pybind11::arg("n"),
+        "Set number of OMP threads.");
 }
