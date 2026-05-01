@@ -12,16 +12,27 @@ namespace py = pybind11;
 
 double compute_entropy_impl(std::span<const std::complex<double>> state, std::span<double> out_probs) 
 {
-  auto total_entropy = 0.0;
   auto constexpr THRESHOLD = 1e-12;
 
+  auto norm_sq = 0.0;
+#pragma omp parallel for simd reduction(+ : norm_sq)
+  for (size_t i = 0; i < state.size(); ++i) {
+      auto const prob = std::norm(state[i]);
+      out_probs[i] = prob;
+      norm_sq += prob;
+  }
+
+  auto const inv_norm = 1./norm_sq;
+
+  auto total_entropy = 0.0;
 #pragma omp parallel for simd reduction(+ : total_entropy)
   for (size_t i = 0; i < state.size(); ++i) 
   {
-    auto const prob = std::max(std::norm(state[i]), THRESHOLD);
+    auto const prob = out_probs[i] * inv_norm;
     out_probs[i] = prob;
+    auto const safe_log = prob > THRESHOLD ? prob : 1.0;
 
-    total_entropy += (prob * std::log2(prob));
+    total_entropy += (prob * std::log2(safe_log));
   }
   return -total_entropy;
 }
