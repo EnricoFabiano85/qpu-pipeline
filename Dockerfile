@@ -5,6 +5,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+ENV OMP_PROC_BIND=true
+ENV OMP_PLACES=cores
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     cmake \

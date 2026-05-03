@@ -32,6 +32,8 @@ def test_numpy_reference(benchmark):
 @pytest.mark.benchmark(group="entropy")
 def test_benchmark_engine(benchmark):
 
+  quantum_engine.set_num_threads(4)
+  
   nQbits = 24
   N = 2**nQbits
 
